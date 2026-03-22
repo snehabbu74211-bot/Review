@@ -1,0 +1,70 @@
+# Fake Review Archaeology - Configuration
+# =======================================
+
+# Data Pipeline Configuration
+data:
+  test_size: 0.2
+  random_state: 42
+  min_review_length: 20
+  max_review_length: 2000
+  balance_method: undersample  # Options: undersample, oversample, none
+
+# Feature Engineering Configuration
+features:
+  include_perplexity: true      # GPT-2 based (computationally expensive)
+  include_burstiness: true      # Fast calculation
+  include_coherence: true       # RoBERTa based (computationally expensive)
+  sample_size: null            # Set to integer for sampling (e.g., 10000)
+
+# Model Configuration
+model:
+  # RoBERTa Settings
+  roberta_model: roberta-base
+  roberta_epochs: 3
+  roberta_batch_size: 16
+  roberta_learning_rate: 0.00002  # 2e-5
+  roberta_max_length: 256
+  roberta_warmup_steps: 100
+  
+  # XGBoost Settings
+  xgboost_max_depth: 6
+  xgboost_n_estimators: 200
+  xgboost_learning_rate: 0.1
+  xgboost_subsample: 0.8
+  xgboost_colsample_bytree: 0.8
+  xgboost_objective: binary:logistic
+  xgboost_eval_metric:
+    - logloss
+    - auc
+    - error
+  
+  # Meta-Classifier Settings
+  meta_classifier: logistic_regression
+  meta_c: 1.0
+  meta_class_weight: balanced
+
+# Business Intelligence Configuration
+business_intelligence:
+  risk_threshold: 0.7
+  min_reviews_for_account: 3
+  conversion_impact: 0.15  # Estimated conversion rate impact from fake reviews
+
+# Dashboard Configuration
+dashboard:
+  port: 8501
+  title: "Fake Review Archaeology"
+  theme: light
+  
+# Paths
+paths:
+  data_raw: data/raw
+  data_processed: data/processed
+  models: models
+  reports: reports
+  logs: logs
+
+# Logging
+logging:
+  level: INFO
+  format: "%(asctime)s - %(name)s - %(levelname)s - %(message)s"
+  file: logs/training.log

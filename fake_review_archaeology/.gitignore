@@ -1,0 +1,91 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+env/
+ENV/
+.venv/
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Jupyter
+.ipynb_checkpoints/
+*.ipynb_checkpoints
+
+# Data files
+data/raw/*
+data/processed/*
+!data/raw/.gitkeep
+!data/processed/.gitkeep
+*.csv
+*.json
+*.parquet
+*.pkl
+*.pickle
+
+# Model files
+models/*
+!models/.gitkeep
+*.pt
+*.pth
+*.h5
+*.onnx
+
+# Logs
+logs/
+*.log
+
+# Training outputs
+experiments/
+outputs/
+runs/
+wandb/
+
+# Environment
+.env
+.env.local
+.env.*.local
+
+# Configuration overrides
+config.local.yaml
+config.override.yaml
+
+# Reports
+reports/*.png
+reports/*.pdf
+reports/*.html
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Temporary files
+tmp/
+temp/
+*.tmp
